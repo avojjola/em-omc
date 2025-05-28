@@ -123,7 +123,6 @@ This lab assumes you have already completed the following:
     - Upgrade – Assess SQL performance impact after upgrading the database version.
     - Migration – Evaluate SQL performance changes when migrating data between source and target databases.
 
-
 	![Task name and STS](./images/changetypemenu.png " ") 
 
 	There are two types of task creations - one is basic and other is advanced. Basic with basic setting whereas Advanced has customized setting.
@@ -171,46 +170,53 @@ This lab assumes you have already completed the following:
 	- SQL Statements by Plan Change: Is showing the number of SQLs that are New Plans or Same Plans in pre and post change trials
 	- SQL Statements by Problems: Is showing number of Errors, Timeouts and Unsupported SQL statements
 
-	Below Image - Buffer Gets report
 	![Buffer Gets report](./images/upgrade-report-buffergets.png " ")
 
 5. Review the regressed SQLs and look for plan change **Yes**, indicating that there is a SQL plan change for that specific SQL.    
 
-	Below Image - Regressed SQLs
 	![Regressed SQLs](./images/regressedsqls.png " ")
 
 6. Click on the SQLID to review the SQL performance by analyzing the metrics and the plan changes. In this report, you can analyze each metric for pre-change and post-change trials. You can view that in the column **Metric Change (Before/After)** where the bars indicating before and after the change for each metric and the respective impact on SQL and on Workload. As you go scroll down, you can see two Plans - Plan Before and Plan After, which shows the execution plan for the SQL before and after the change.
  
-	Below Image - Regressed SQL report
 	![Regressed SQLs](./images/metrics.png " ")
 
-	Below Image - View before and after SQLID plans
 	![Regressed SQLs](./images/beforeandafterplan.png " ")
 
-	Below Image - Index change in the plan
 	![Regressed SQLs](./images/indexchanges.png " ")
 
 **Note:** To do it in your own tenancy, please choose change type as **Upgrade** and make sure there are DB links available to run the SPA trials remotely. [Refer to video](https://youtu.be/C9qkLNqj5x4) on how to test the upgrade using SQL Performance Watch.
+
+
+**This is additional information and cannot be performed in this lab.**
+Fix Regressed SQLs - Please run SQL Tuning Advisor for the recommendations to fix the regressions. You can run SQL Tuning Advisor available either on Enterprise Manager or on Database Management service on cloud and then re-run the task again in SQL Performance Watch to verify if all regressed SQLs have been resolved. Please refer the below image, an example of SQL Tuning Advisor Recommendation on Diagnostic and Management service.
+
+	![SQL Tuning Advisor Recommendations](./images/sqltuningrecomm.png " ")
+
+Please [Refer to video](https://youtu.be/yzo_zdmvUTE) on how to use Custom or Guided workflow to fix the regressions and re-run SQL Performance Watch to validate the fixes. You can continue to run SQL Tuning Advisor for recommendations till you achieve satisfied results and replicate the same in the production environment to avoid the regressions proactively.
 
 
 ## Task 4: Use Case 2 - Test the database parameter change
 
 1. Go back to SQL Performance Watch summary page and view the other saved report of validating new indexes. Let's open the report to review how to validate adding new indexes report. Click on saved report - **Validate\_New\_Indexes**.
 
-	Below Image - Parameter Change saved report
 	![Parameter Change Report](./images/validatingnewindexreport.png " ")
 
 2. Check for improved SQLs and analyze the report for the impact and improvement of the SQLs due to index addition. 
 
-	Below Image - View improved SQLs
 	![Parameter Change Report](./images/improvedsqls.png " ")
 
 3. Click on the SQLID to review the SQL performance by analyzing the metrics and the plan changes as you have done in the previous task.
 
-4. To do it on your own, please choose change type as **Parameter Change** and make sure the indexes are invisible while adding, and choose the parameter as **optimizer\_use\_invisible\_indexes** and change the value to **True**. Please note that this lab is simulated with read only privileges, thus you cannot submit the task or fetch the DB links.
- 
-	Below Image - View New Indexes
+4. To do it on your own, please choose change type as **Parameter Change** and make sure the indexes are invisible while adding, and choose the parameter as **optimizer\_use\_invisible\_indexes** and change the value to **True**.[Refer to video](https://youtu.be/whv2V9WTack) on how to assess the parameter change using SQL Performance Watch. Please note that this lab is simulated with read only privileges, thus you cannot submit the task or fetch the DB links.
+
 	![Invisible Index](./images/invisibleindex.png " ")
+
+**This is additional information and cannot be performed in this lab.**
+Fix Regressed SQLs - Please run SQL Tuning Advisor for the recommendations to fix the regressions. You can run SQL Tuning Advisor available either on Enterprise Manager or on Database Management service on cloud and then re-run the task again in SQL Performance Watch to verify if all regressed SQLs have been resolved. Please refer the below image, an example of SQL Tuning Advisor Recommendations on Diagnostic and Management service.
+
+	![SQL Tuning Advisor Recommendations](./images/sqltuningrecomm.png " ")
+
+Please [Refer to video](https://youtu.be/yzo_zdmvUTE) on how to use Custom or Guided workflow to fix the regressions and re-run SQL Performance Watch to validate the fixes. You can continue to run SQL Tuning Advisor for recommendations till you achieve satisfied results and replicate the same in the production environment to avoid the regressions proactively.
 
 Now you can follow the same steps in your own tenancy to explore SQL Performance Watch features, to know more about the other use cases, please refer to the videos below.
 
@@ -226,4 +232,4 @@ Now you can follow the same steps in your own tenancy to explore SQL Performance
 
 - **Author** - Anusha Vojjola, Senior Product Manager, Observability and Management
 - **Contributors** - Anusha Vojjola, Anand Prabhu
-- **Last Updated By/Date** - Anusha Vojjola, April 2025
+- **Last Updated By/Date** - Anusha Vojjola, May 2025
